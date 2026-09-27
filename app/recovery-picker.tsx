@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { cards, categories, type CategoryKey, type Energy } from "../lib/cards";
+import { getRecoveryCandidates } from "../lib/card-selection";
 
 const energyOptions: { value: Energy; label: string; note: string }[] = [
   { value: "low", label: "ほぼ空", note: "考える力も残っていない" },
@@ -14,13 +15,8 @@ export function RecoveryPicker() {
   const [energy, setEnergy] = useState<Energy | null>(null);
   const [offset, setOffset] = useState(0);
 
-  const result = useMemo(() => {
-    if (!category || !energy) return null;
-    const matching = cards.filter(
-      (card) => card.category === category && (card.energy === energy || card.energy === "any"),
-    );
-    return matching[offset % matching.length] ?? cards.find((card) => card.category === category) ?? null;
-  }, [category, energy, offset]);
+  const candidates = useMemo(() => category && energy ? getRecoveryCandidates(cards, category, energy) : [], [category, energy]);
+  const result = candidates.length ? candidates[offset % candidates.length] : null;
 
   return (
     <div className="picker">
@@ -69,12 +65,13 @@ export function RecoveryPicker() {
         </div>
       </fieldset>
 
-      <div className={result ? "picker-result ready" : "picker-result"} aria-live="polite">
+      {candidates.length > 0 && <div className="scenario-choice"><label htmlFor="picker-scenario">具体的な状況に合わせる（任意）</label><select id="picker-scenario" value={result?.slug ?? ""} onChange={(event) => setOffset(candidates.findIndex((card) => card.slug === event.target.value))}>{candidates.map((card) => <option value={card.slug} key={card.slug}>{card.trigger}</option>)}</select></div>}
+      <div className={result ? "picker-result ready" : "picker-result"} aria-live="polite" aria-atomic="true">
         {result ? (
           <>
             <div className="result-meta">
-              <span>YOUR FUDA</span>
-              <span>{result.minutes} MIN</span>
+              <span>今の一枚</span>
+              <span>目安 {result.minutes}分</span>
             </div>
             <p>{result.trigger}</p>
             <h3>{result.title}</h3>
@@ -85,7 +82,7 @@ export function RecoveryPicker() {
             </ol>
             <div className="result-actions">
               <Link href={`/fuda/${result.slug}`}>この札を開く →</Link>
-              <button type="button" onClick={() => setOffset((value) => value + 1)}>
+              <button type="button" disabled={candidates.length < 2} onClick={() => setOffset((value) => value + 1)}>
                 別の札
               </button>
             </div>
@@ -94,7 +91,7 @@ export function RecoveryPicker() {
           <div className="empty-result">
             <span aria-hidden="true">↳</span>
             <p>
-              ふたつ選ぶと、
+              {category ? "あと一つ、残りの気力を選ぶと、" : energy ? "あと一つ、場面を選ぶと、" : "場面と気力を選ぶと、"}
               <br />
               ここに一枚だけ現れます。
             </p>

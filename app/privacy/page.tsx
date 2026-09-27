@@ -1,19 +1,23 @@
 import Link from "next/link";
+import { SiteHeader, SiteFooter } from "../site-chrome";
+import { pageMetadata } from "../../lib/site";
 
-export const metadata = { title: "プライバシー", description: "分岐札のプライバシー方針。" };
+export const metadata = pageMetadata("プライバシー", "分岐札の検索・選択・チェック内容と、配信時のデータの取扱い。", "/privacy/");
 
 export default function PrivacyPage() {
   return (
     <>
-      <header className="site-header"><Link className="brand" href="/"><span className="brand-mark" aria-hidden="true" />分岐札</Link></header>
-      <main className="plain-page">
+      <SiteHeader />
+      <main className="plain-page" id="main-content">
         <Link className="crumb" href="/">← ホームへ戻る</Link>
-        <p className="section-number">PRIVACY / 2026.07.29</p>
+        <p className="section-number">PRIVACY / 2026.09.28</p>
         <h1>入力を、集めない。</h1>
-        <p>分岐札の診断機能はブラウザ内で完結し、選択内容をサーバーへ送信・保存しません。</p>
+        <p>札の選択、キーワード検索、手順チェックはブラウザ内で動きます。これらの入力内容をサーバーへ送信・保存する機能はありません。</p>
         <section className="plain-section">
           <h2>現在のデータ取扱い</h2>
-          <p>アカウント作成、フォーム送信、コメント、問い合わせ受付はありません。端末内の選択状態もページを閉じると消えます。配信基盤がセキュリティや障害対応のために通常のアクセス記録を一時処理する場合があります。</p>
+          <p>アカウント作成、フォーム送信、コメント、問い合わせ受付はありません。選択・検索・チェックの状態はページを離れると消えます。Cookieや端末内ストレージを利用する独自の保存機能、アクセス解析、第三者広告は設けていません。GitHub Pagesなどの配信基盤は、ページの配信やセキュリティのためにIPアドレス等の通常のアクセス情報を処理することがあります。</p>
+          <p>URLコピーは現在の札のURLを端末のクリップボードへ書き込みます。「共有する」は端末の共有機能を開き、送信先は利用者が選びます。</p>
+          <p>配信基盤の詳しい取扱いは、<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">GitHub Pagesのデータ収集について</a>をご覧ください。</p>
         </section>
         <section className="plain-section">
           <h2>広告を掲載する場合</h2>
@@ -24,6 +28,7 @@ export default function PrivacyPage() {
           <p>掲載内容は日常の作業再開を補助する一般情報です。医療、心理、法律、金融、安全上の専門助言ではありません。緊急性や個別事情がある場合は、適切な専門機関の案内を優先してください。</p>
         </section>
       </main>
+      <SiteFooter />
     </>
   );
 }

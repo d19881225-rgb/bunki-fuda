@@ -3,6 +3,7 @@ name: Deploy Bunki Fuda to GitHub Pages
 on:
   push:
     branches: ["main"]
+    paths-ignore: ["docs/**", "README.md"]
   workflow_dispatch:
 
 permissions:
@@ -38,6 +39,9 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
           NEXT_PUBLIC_SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: npm run build
+
+      - name: Verify static site
+        run: npm test
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

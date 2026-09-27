@@ -3,6 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PrintShare } from "../../print-share";
 import { cards, categories, getCard } from "../../../lib/cards";
+import { ProtocolChecklist } from "../../protocol-checklist";
+import { SiteHeader, SiteFooter } from "../../site-chrome";
+import { siteUrl } from "../../../lib/site";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -14,11 +17,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const card = getCard(slug);
   if (!card) return {};
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  const description = `${card.trigger}ときに、再開の入口をつくる3手順。目安${card.minutes}分。${card.steps[0]}から試せます。`;
+  const url = `${siteUrl}/fuda/${card.slug}/`;
   return {
     title: card.title,
-    description: `${card.trigger}ときの${card.minutes}分復帰手順。${card.steps.join("。")}。`,
-    alternates: { canonical: `${siteUrl}/fuda/${card.slug}/` },
+    description,
+    alternates: { canonical: url },
+    openGraph: { type: "article", locale: "ja_JP", title: `${card.title}｜分岐札`, description, url, images: [{ url: `${siteUrl}/social-preview.png`, width: 1200, height: 630, alt: "分岐札：失敗した日の、次の一手。" }] },
+    twitter: { card: "summary_large_image", title: `${card.title}｜分岐札`, description, images: [`${siteUrl}/social-preview.png`] },
   };
 }
 
@@ -28,6 +34,7 @@ export default async function FudaPage({ params }: PageProps) {
   if (!card) notFound();
 
   const category = categories.find((item) => item.key === card.category);
+  const related = cards.filter((item) => item.category === card.category && item.slug !== card.slug);
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "HowTo",
@@ -43,29 +50,23 @@ export default async function FudaPage({ params }: PageProps) {
 
   return (
     <>
-      <header className="site-header">
-        <Link className="brand" href="/">
-          <span className="brand-mark" aria-hidden="true" />分岐札
-        </Link>
-        <nav><Link href="/#picker">札をひく</Link><Link href="/about">この場所について</Link></nav>
-      </header>
-      <main className="detail-page">
-        <Link className="crumb" href="/#library">← 標本箱へ戻る</Link>
+      <SiteHeader />
+      <main className="detail-page" id="main-content">
+        <Link className="crumb" href="/#library">← 全20枚へ戻る</Link>
         <div className="detail-kicker">
-          <span>{category?.label} / RECOVERY FUDA</span><span>{card.minutes} MIN</span>
+          <span>{category?.label}の札</span><span>目安 {card.minutes}分</span>
         </div>
         <p className="detail-trigger">{card.trigger}</p>
         <h1>{card.title}</h1>
-        <ol className="protocol">
-          {card.steps.map((step) => <li key={step}><strong>{step}</strong></li>)}
-        </ol>
+        <ProtocolChecklist key={card.slug} steps={card.steps} stopRule={card.stopRule} />
         <div className="branch-box"><span>IF / それも重いなら</span><p>{card.branch}</p></div>
-        <div className="stop-rule">終了条件：{card.stopRule}</div>
         <section className="detail-note">
           <h2>この札の設計意図</h2><p>{card.why}</p>
         </section>
-        <PrintShare title={card.title} />
+        <PrintShare key={card.slug} title={card.title} />
+        <section className="related-section" aria-labelledby="related-heading"><h2 id="related-heading">同じ場面の、別の札。</h2><div className="related-list">{related.map((item) => <Link key={item.slug} href={`/fuda/${item.slug}`}><span>{item.trigger}</span><strong>{item.title}</strong><small>目安 {item.minutes}分 →</small></Link>)}</div></section>
       </main>
+      <SiteFooter />
       <script
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, "\\u003c") }}
         type="application/ld+json"

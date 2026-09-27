@@ -1,40 +1,29 @@
 import Link from "next/link";
 import { RecoveryPicker } from "./recovery-picker";
-import { cards, categories } from "../lib/cards";
+import { CardLibrary } from "./card-library";
+import { SiteHeader, SiteFooter } from "./site-chrome";
 
 export default function Home() {
-  const featured = cards.slice(0, 8);
-
   return (
     <>
-      <header className="site-header">
-        <Link className="brand" href="/" aria-label="分岐札 ホーム">
-          <span className="brand-mark" aria-hidden="true" />
-          分岐札
-        </Link>
-        <nav aria-label="メインナビゲーション">
-          <a href="#library">札を探す</a>
-          <Link href="/about">この場所について</Link>
-        </nav>
-      </header>
+      <SiteHeader />
 
-      <main>
+      <main id="main-content">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">FAILURE-FIRST MICRO PROTOCOLS</p>
+            <p className="eyebrow">止まった日から始める、20枚の小さな手順書</p>
             <h1>
               失敗した日の、
               <br />
-              <span>3分復帰。</span>
+              <span>次の一手。</span>
             </h1>
             <p className="hero-lead">
-              「ちゃんとやる」は、元気な日の作戦。
+              寝坊した朝。白紙の資料。たまった洗い物。
               <br />
-              分岐札は、止まった瞬間からやり直すための小さな手順書です。
+              今の状況から、2〜5分を目安にできる小さな3手順を選べます。
             </p>
-            <a className="primary-link" href="#picker">
-              今の一枚をひく <span aria-hidden="true">↓</span>
-            </a>
+            <div className="hero-actions"><a className="primary-link" href="#picker">今の状況から選ぶ <span aria-hidden="true">↓</span></a><a className="hero-secondary" href="#library">全20枚を探す →</a></div>
+            <p className="hero-note">無料・登録不要。作業を再開する入口をつくります。</p>
           </div>
 
           <div className="hero-diagram" aria-label="一つの失敗から三つの復帰手順へ分岐する図">
@@ -68,7 +57,7 @@ export default function Home() {
           <div className="section-intro">
             <p className="section-number">01 / PICK</p>
             <h2>いま、何が止まった？</h2>
-            <p>2つ選ぶと、20枚から今の一枚だけを返します。入力内容は送信も保存もしません。</p>
+            <p>場面と気力を選ぶと、まず一枚。具体的な状況に合わせて選び直せます。選択内容は送信・保存しません。</p>
           </div>
           <RecoveryPicker />
         </section>
@@ -77,87 +66,50 @@ export default function Home() {
           <div className="section-intro library-heading">
             <div>
               <p className="section-number">02 / LIBRARY</p>
-              <h2>復帰札の標本箱</h2>
+              <h2>今に合う札を探す。</h2>
             </div>
             <p>
-              正解ではなく、再開点をつくる。
+              5つの場面、全20枚。
               <br />
-              すべて無料で読めます。
+              状況の言葉やカテゴリから探せます。
             </p>
           </div>
 
-          <div className="category-index" aria-label="カテゴリ一覧">
-            {categories.map((category) => (
-              <span key={category.key}>
-                {category.label}
-                <b>{cards.filter((card) => card.category === category.key).length}</b>
-              </span>
-            ))}
-          </div>
+          <CardLibrary />
+        </section>
 
-          <div className="card-grid">
-            {featured.map((card, index) => (
-              <Link className="fuda-card" href={`/fuda/${card.slug}`} key={card.slug}>
-                <div className="fuda-topline">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <span>{card.minutes} MIN</span>
-                </div>
-                <p>{card.trigger}</p>
-                <h3>{card.title}</h3>
-                <div className="fuda-footer">
-                  <span>{categories.find((item) => item.key === card.category)?.label}</span>
-                  <span aria-hidden="true">↗</span>
-                </div>
-              </Link>
-            ))}
+        <section className="howto-section" id="howto" aria-labelledby="howto-heading">
+          <div className="section-intro"><p className="section-number">03 / HOW TO</p><h2 id="howto-heading">一枚の使い方。</h2><p>全部を取り戻そうとしなくて大丈夫。再開する入口だけ、つくります。</p></div>
+          <ol className="howto-grid">
+            <li><span>01</span><h3>今の状況を見つける</h3><p>場面と気力で選ぶか、検索から近い札を開きます。</p></li>
+            <li><span>02</span><h3>できる一手から試す</h3><p>手順は3つ。重ければ「それも重いなら」の小さな一手へ。</p></li>
+            <li><span>03</span><h3>終了条件で一区切り</h3><p>終えてよい目安に届いたら終了。必要なら印刷やURLコピーでまた使えます。</p></li>
+          </ol>
+          <div className="faq"><h3>よくある疑問</h3>
+            <details><summary>3手順すべてを終える必要がありますか？</summary><p>ありません。一つだけでも終了条件に届けば一区切りです。気力が足りない場合は、詳細ページの「それも重いなら」を試せます。</p></details>
+            <details><summary>入力やチェック内容は保存されますか？</summary><p>保存・送信しません。ページを離れると消えます。同じ札をまた使うには、URLをブックマークするか印刷してください。</p></details>
+            <details><summary>お金や登録は必要ですか？</summary><p>すべて無料です。会員登録も、個別相談の申し込みもありません。</p></details>
           </div>
-
-          <details className="all-cards">
-            <summary>全20枚を見る</summary>
-            <div className="all-card-list">
-              {cards.map((card) => (
-                <Link href={`/fuda/${card.slug}`} key={card.slug}>
-                  <span>{card.trigger}</span>
-                  <strong>{card.title}</strong>
-                  <small>{card.minutes}分</small>
-                </Link>
-              ))}
-            </div>
-          </details>
         </section>
 
         <section className="manifesto">
-          <p className="section-number">03 / WHY</p>
+          <p className="section-number">04 / WHY</p>
           <blockquote>
-            習慣は、続いた日ではなく
+            止まったところに、
             <br />
-            <span>戻れた日</span>に強くなる。
+            <span>再開点</span>をひとつ。
           </blockquote>
           <div className="manifesto-copy">
             <p>
               大きな計画は「調子がいい自分」を前提にします。分岐札が設計するのは、その前提が壊れた後。
-              だから、一枚は3分前後。達成よりも再接続を目的にしています。
+              一枚は2〜5分が目安。作業を全部終えることではなく、もう一度触れられる入口を目的にしています。
             </p>
             <Link href="/about">編集原則を読む →</Link>
           </div>
         </section>
       </main>
 
-      <footer>
-        <div>
-          <Link className="brand footer-brand" href="/">
-            <span className="brand-mark" aria-hidden="true" />
-            分岐札
-          </Link>
-          <p>失敗を、分岐点に。</p>
-        </div>
-        <nav aria-label="フッターナビゲーション">
-          <Link href="/about">運営・編集原則</Link>
-          <Link href="/privacy">プライバシー</Link>
-          <a href="#picker">札をひく</a>
-        </nav>
-        <small>© 2026 BUNKI FUDA</small>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f4f0e6"/>
+  <rect x="66" y="55" width="22" height="22" fill="#ef4423"/>
+  <g font-family="Yu Gothic, Meiryo, sans-serif" fill="#171713">
+    <text x="105" y="78" font-size="28" font-weight="700">分岐札</text>
+    <text x="65" y="188" font-size="25" font-weight="700">止まった日から始める、20枚の小さな手順書</text>
+    <text x="60" y="303" font-size="78" font-weight="900">失敗した日の、</text>
+    <rect x="65" y="336" width="470" height="90" fill="#d8f04a"/>
+    <text x="60" y="414" font-size="78" font-weight="900">次の一手。</text>
+    <text x="65" y="520" font-size="25" font-weight="700">朝・仕事・学び・家事・夜</text>
+    <text x="65" y="568" font-size="22">2〜5分の目安 / 無料・登録不要</text>
+  </g>
+  <g stroke="#171713" stroke-width="8" fill="none"><path d="M790 315 L900 170 M790 315 L900 315 M790 315 L900 460"/></g>
+  <circle cx="770" cy="315" r="58" fill="#171713"/>
+  <g fill="#f4f0e6" stroke="#171713" stroke-width="3"><rect x="900" y="118" width="235" height="100"/><rect x="900" y="265" width="235" height="100" fill="#d8f04a"/><rect x="900" y="410" width="235" height="100"/></g>
+  <g font-family="Yu Gothic, Meiryo, sans-serif" fill="#171713" font-size="25" font-weight="700" text-anchor="middle"><text x="1017" y="178">小さくする</text><text x="1017" y="325">場所を変える</text><text x="1017" y="470">終わりを決める</text></g>
+</svg>
