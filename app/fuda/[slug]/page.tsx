@@ -63,7 +63,7 @@ export default async function FudaPage({ params }: PageProps) {
         <section className="detail-note">
           <h2>この札の設計意図</h2><p>{card.why}</p>
         </section>
-        <PrintShare key={card.slug} title={card.title} />
+        <PrintShare key={card.slug} card={card} url={`${siteUrl}/fuda/${card.slug}/`} />
         <section className="related-section" aria-labelledby="related-heading"><h2 id="related-heading">同じ場面の、別の札。</h2><div className="related-list">{related.map((item) => <Link key={item.slug} href={`/fuda/${item.slug}`}><span>{item.trigger}</span><strong>{item.title}</strong><small>目安 {item.minutes}分 →</small></Link>)}</div></section>
       </main>
       <SiteFooter />

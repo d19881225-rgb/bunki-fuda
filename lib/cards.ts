@@ -12,6 +12,7 @@ export type FudaCard = {
   branch: string;
   stopRule: string;
   why: string;
+  searchTerms: string[];
 };
 
 export const categories: { key: CategoryKey; label: string }[] = [
@@ -26,6 +27,7 @@ export const cards: FudaCard[] = [
   {
     slug: "overslept-morning", category: "morning", energy: "low", minutes: 3,
     trigger: "寝坊して、朝の予定が全部崩れた", title: "朝を取り戻さず、一本だけ通す",
+    searchTerms: ["寝坊", "ねぼう", "遅刻", "朝の支度"],
     steps: ["水を一口飲む", "今日やらない朝習慣を二つ決める", "玄関までの一本道だけ片づける"],
     branch: "まだ動けないなら、カーテンを開けるだけで終了。次の行動は明るさに任せる。",
     stopRule: "遅れを回収しない。出発に必要な一本が通ったら終わり。",
@@ -34,6 +36,7 @@ export const cards: FudaCard[] = [
   {
     slug: "left-bed-late", category: "morning", energy: "normal", minutes: 4,
     trigger: "起きたのに、ベッドから離れられない", title: "身体ではなく、足だけを起こす",
+    searchTerms: ["起きられない", "起きれない", "布団", "ふとん", "ベッド"],
     steps: ["片足だけ床につける", "床についた足で立ち、窓か洗面所へ行く", "戻ってもよい前提で顔か手を水につける"],
     branch: "立てなければ、上半身だけ起こして10秒。そこで終えても札は完了。",
     stopRule: "朝を始めなくていい。場所が一度変わったら成功。",
@@ -42,6 +45,7 @@ export const cards: FudaCard[] = [
   {
     slug: "phone-first-morning", category: "morning", energy: "low", minutes: 2,
     trigger: "起きてすぐ、スマホを見続けてしまった", title: "スマホをやめずに、距離だけ変える",
+    searchTerms: ["スマホ", "スマートフォン", "携帯", "SNS", "朝のスマホ"],
     steps: ["画面を伏せる", "立たないと届かない場所に置く", "その場で肩を三回回す"],
     branch: "置けないなら、画面を白黒表示にして1分だけタイマーをかける。",
     stopRule: "取り返そうとしない。次に手を伸ばすまでの距離ができたら終わり。",
@@ -50,6 +54,7 @@ export const cards: FudaCard[] = [
   {
     slug: "no-breakfast-time", category: "morning", energy: "normal", minutes: 3,
     trigger: "朝食を作る時間がなくなった", title: "献立を捨てて、三要素だけ拾う",
+    searchTerms: ["朝ごはん", "朝ご飯", "朝食", "ちょうしょく", "食事"],
     steps: ["水分を一つ選ぶ", "すぐ食べられる主食か果物を一つ選ぶ", "持ち出せる形にまとめる"],
     branch: "食べられないなら、水分だけ確保し、後で食べる時刻を一つ決める。",
     stopRule: "料理はしない。持って出られる状態で終了。",
@@ -58,6 +63,7 @@ export const cards: FudaCard[] = [
   {
     slug: "inbox-freeze", category: "work", energy: "low", minutes: 3,
     trigger: "未読が多すぎて、受信箱を閉じた", title: "返信せずに、三色へ分ける",
+    searchTerms: ["メール", "email", "Eメール", "受信箱", "未読", "返信", "連絡"],
     steps: ["今日止まる連絡を一件だけ探す", "要返信・読むだけ・後日の三つに分ける", "要返信の一件に印だけ付ける"],
     branch: "件名を見るのも重ければ、送信者名だけで一件選ぶ。本文は開かなくてよい。",
     stopRule: "返信を書かない。最初の一件が決まったら終わり。",
@@ -66,6 +72,7 @@ export const cards: FudaCard[] = [
   {
     slug: "blank-document", category: "work", energy: "normal", minutes: 5,
     trigger: "白紙の資料を前に、手が止まった", title: "文章を書かず、空欄を三つ置く",
+    searchTerms: ["資料作成", "書類", "レポート", "報告書", "文章", "書き始め"],
     steps: ["結論・根拠・次の行動とだけ書く", "各見出しの下に空の箇条書きを一つ置く", "一番埋めやすい空欄に仮の一文を書く"],
     branch: "結論が決まらないなら「この資料で決めたいこと」を疑問文で置く。",
     stopRule: "整えない。仮の一文が一つ入ったら終了。",
@@ -74,6 +81,7 @@ export const cards: FudaCard[] = [
   {
     slug: "meeting-aftershock", category: "work", energy: "low", minutes: 3,
     trigger: "会議のあと、次に何をするか分からない", title: "議事録ではなく、矢印を一本残す",
+    searchTerms: ["会議", "ミーティング", "打ち合わせ", "議事録", "次の行動"],
     steps: ["会議名を書く", "自分が動くことを一つだけ書く", "その横に着手時刻か待つ相手を書く"],
     branch: "自分の仕事がなければ「待つもの」と確認日だけを残す。",
     stopRule: "会議を要約しない。次の矢印が一本見えたら終わり。",
@@ -82,6 +90,7 @@ export const cards: FudaCard[] = [
   {
     slug: "tab-overload", category: "work", energy: "normal", minutes: 4,
     trigger: "タブを開きすぎて、作業が見えない", title: "閉じずに、作業島を一つ作る",
+    searchTerms: ["タブ", "ブラウザ", "ブラウザー", "ウィンドウ", "パソコン", "PC"],
     steps: ["新しいウィンドウを一つ開く", "今使うタブだけ二つまで移す", "元のウィンドウを最小化する"],
     branch: "移す判断が難しければ、白紙タブ一枚だけで新しいウィンドウを始める。",
     stopRule: "整理しない。見える範囲が一作業になったら終了。",
@@ -90,6 +99,7 @@ export const cards: FudaCard[] = [
   {
     slug: "missed-study-day", category: "study", energy: "low", minutes: 2,
     trigger: "勉強を一日休み、再開が重くなった", title: "遅れを埋めず、昨日の一行だけ触る",
+    searchTerms: ["勉強", "べんきょう", "学習", "がくしゅう", "勉強の再開", "教材"],
     steps: ["教材を開く", "最後に見た場所を指で示す", "分かる単語を一つ声か文字にする"],
     branch: "教材を開けなければ、表紙かファイル名を見るだけで終了。",
     stopRule: "予定分をやらない。前回との接点が一つ戻ったら成功。",
@@ -98,6 +108,7 @@ export const cards: FudaCard[] = [
   {
     slug: "forgot-what-read", category: "study", energy: "normal", minutes: 4,
     trigger: "読んだ内容を、ほとんど忘れている", title: "読み直さず、三つの穴を作る",
+    searchTerms: ["読書", "どくしょ", "復習", "ふくしゅう", "忘れた", "思い出せない"],
     steps: ["覚えている言葉を一つ書く", "分からなくなった点を疑問文にする", "答えがありそうな見出しだけ探す"],
     branch: "何も覚えていなければ、目次から気になる見出しを一つ選ぶ。",
     stopRule: "理解し直さない。次に探す穴が一つできたら終わり。",
@@ -106,6 +117,7 @@ export const cards: FudaCard[] = [
   {
     slug: "course-backlog", category: "study", energy: "low", minutes: 3,
     trigger: "講座がたまり、一覧を見るのも嫌になった", title: "順番を捨てて、最短の一本を選ぶ",
+    searchTerms: ["講座", "オンライン講座", "動画", "授業", "積み残し", "学習"],
     steps: ["残り時間が一番短い回を探す", "再生位置を冒頭に合わせる", "最初の60秒だけ見る"],
     branch: "時間表示がなければ、題名が一番具体的な回を選ぶ。",
     stopRule: "一本を完了しない。60秒で止めても札は完了。",
@@ -114,6 +126,7 @@ export const cards: FudaCard[] = [
   {
     slug: "note-perfection", category: "study", energy: "normal", minutes: 5,
     trigger: "ノートをきれいに作ろうとして進まない", title: "提出しない紙に、汚く置く",
+    searchTerms: ["ノート", "メモ", "清書", "完璧", "きれい", "学習"],
     steps: ["新しいメモに「捨てメモ」と書く", "名詞だけ三つ並べる", "三つを矢印か線でつなぐ"],
     branch: "線の意味が決まらなければ、疑問符を一つ置く。",
     stopRule: "清書しない。関係が一本見えたら終了。",
@@ -122,6 +135,7 @@ export const cards: FudaCard[] = [
   {
     slug: "sink-pile", category: "home", energy: "low", minutes: 3,
     trigger: "洗い物がたまり、台所に入りたくない", title: "洗わずに、蛇口までの道を作る",
+    searchTerms: ["洗い物", "洗いもの", "食器", "食器洗い", "皿洗い", "キッチン", "シンク"],
     steps: ["割れ物だけ端へ分ける", "排水口の上を一皿分あける", "コップか箸を一つだけ洗う"],
     branch: "水を出せないほど重ければ、割れ物を安全な場所へ移すだけ。",
     stopRule: "全部洗わない。蛇口と排水口が使えるようになったら終わり。",
@@ -130,6 +144,7 @@ export const cards: FudaCard[] = [
   {
     slug: "laundry-chair", category: "home", energy: "normal", minutes: 4,
     trigger: "洗濯物が椅子の上で山になった", title: "畳まずに、行き先で三つに割る",
+    searchTerms: ["洗濯", "せんたく", "洗濯もの", "衣類", "服", "畳む", "たたむ", "片付け"],
     steps: ["上半身・下半身・その他の三か所を作る", "山の上から五枚だけ分ける", "一番多い一群だけ収納場所へ運ぶ"],
     branch: "収納まで行けなければ、一群を袋かかごにまとめる。",
     stopRule: "畳まない。椅子の座面が手のひら一枚見えたら終了。",
@@ -138,6 +153,7 @@ export const cards: FudaCard[] = [
   {
     slug: "room-reset", category: "home", energy: "low", minutes: 3,
     trigger: "部屋全体が散らかり、どこから触るか決められない", title: "床ではなく、四角を一つ救出する",
+    searchTerms: ["片付け", "片づけ", "かたづけ", "掃除", "そうじ", "整理", "部屋", "散らかった"],
     steps: ["机・椅子・棚から一つ選ぶ", "手のひら四枚分だけ範囲を決める", "その範囲の物を「戻す・捨てる・保留」に分ける"],
     branch: "分けられなければ、保留箱へ集めて面だけ出す。",
     stopRule: "部屋を片づけない。四角い面が一つ現れたら終わり。",
@@ -146,6 +162,7 @@ export const cards: FudaCard[] = [
   {
     slug: "trash-day-missed", category: "home", energy: "normal", minutes: 3,
     trigger: "ごみの日を逃して、袋を見るたび落ち込む", title: "捨てずに、次の出発だけ予約する",
+    searchTerms: ["ゴミ", "ゴミ出し", "ごみ出し", "ごみの日", "回収日", "収集日"],
     steps: ["次の回収日を確認する", "袋を玄関に近い安全な場所へ移す", "日付を袋か玄関に一つ表示する"],
     branch: "回収日を確認できなければ、確認する時刻を予定に入れる。",
     stopRule: "反省しない。次の移動時点が見えたら終わり。",
@@ -154,6 +171,7 @@ export const cards: FudaCard[] = [
   {
     slug: "late-night-scroll", category: "night", energy: "low", minutes: 2,
     trigger: "寝る時間を過ぎても、画面を閉じられない", title: "眠ろうとせず、充電場所へ運ぶ",
+    searchTerms: ["夜更かし", "夜ふかし", "よふかし", "寝る前", "スマホ", "SNS"],
     steps: ["今の画面を閉じずに立つ", "充電器の場所まで端末を運ぶ", "充電につないで画面を伏せる"],
     branch: "立てなければ、明るさを最低にして端末を手の届かない端へ置く。",
     stopRule: "眠らなくていい。端末と身体の距離ができたら終了。",
@@ -162,6 +180,7 @@ export const cards: FudaCard[] = [
   {
     slug: "unfinished-day", category: "night", energy: "normal", minutes: 4,
     trigger: "やり残しが気になり、一日を閉じられない", title: "完了せず、明日の入口だけ書く",
+    searchTerms: ["やり残し", "やり残した", "未完了", "タスク", "ToDo", "明日の準備"],
     steps: ["気になる未完了を一つ書く", "次に触る場所かファイル名を書く", "開始時刻ではなく開始の合図を決める"],
     branch: "一つに絞れなければ、頭に最初に浮かんだものを仮採用する。",
     stopRule: "今夜は着手しない。明日の最初の一手が見えたら終わり。",
@@ -170,6 +189,7 @@ export const cards: FudaCard[] = [
   {
     slug: "missed-journal", category: "night", energy: "low", minutes: 2,
     trigger: "日記を数日書けず、空白が気になる", title: "空白を埋めず、今日を三語で置く",
+    searchTerms: ["日記", "にっき", "ジャーナル", "ジャーナリング", "記録"],
     steps: ["今日の日付を書く", "場所・感情・出来事を各一語で書く", "最後に丸を一つ付ける"],
     branch: "言葉が出なければ、天気か時刻だけを書く。",
     stopRule: "過去の日付へ戻らない。今日に印が一つ付いたら終了。",
@@ -178,6 +198,7 @@ export const cards: FudaCard[] = [
   {
     slug: "tomorrow-anxiety", category: "night", energy: "normal", minutes: 5,
     trigger: "明日の予定を考えるほど、不安が増える", title: "一日を組まず、最初の十分だけ置く",
+    searchTerms: ["明日の予定", "スケジュール", "明日の準備", "予定", "最初の一歩"],
     steps: ["明日最初にいる場所を書く", "そこでする最初の動作を一つ書く", "必要な物を一つだけ見える場所へ出す"],
     branch: "予定が未確定なら、確認する相手ではなく確認する手段を一つ書く。",
     stopRule: "明日全体を計画しない。最初の十分が見えたら終了。",

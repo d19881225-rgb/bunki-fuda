@@ -4,9 +4,9 @@
   --paper: #f4f0e6;
   --paper-deep: #e9e3d5;
   --ink: #171713;
-  --muted: #6f6b61;
+  --muted: #59564f;
   --lime: #d8f04a;
-  --red: #ef4423;
+  --red: #a82e17;
   --line: rgba(23, 23, 19, 0.24);
 }
 
@@ -23,7 +23,7 @@ body {
 a { color: inherit; text-decoration: none; }
 button, input, select { color: inherit; font: inherit; }
 button:disabled { cursor: default; opacity: .5; }
-:where(a, button, input, select, summary):focus-visible { outline: 3px solid var(--red); outline-offset: 5px; }
+:where(a, button, input, select, textarea, summary):focus-visible { outline: 3px solid var(--red); outline-offset: 5px; }
 .skip-link { background: var(--ink); color: var(--paper); left: 12px; padding: 12px 18px; position: fixed; top: -100px; z-index: 10; }
 .skip-link:focus { top: 12px; }
 section[id] { scroll-margin-top: 24px; }
@@ -259,8 +259,14 @@ footer p, footer small { color: var(--muted); font-size: 11px; }
 .library-tools { border-top: 2px solid var(--ink); margin-top: 35px; padding-top: 24px; }
 .library-tools > label, .scenario-choice label { display: block; font-size: 14px; font-weight: 800; margin-bottom: 10px; }
 .search-row { align-items: center; display: flex; gap: 16px; }
-.search-row input, .scenario-choice select, .manual-copy input { background: #fffdf7; border: 1px solid var(--ink); border-radius: 0; min-height: 48px; min-width: 0; padding: 12px 14px; width: 100%; }
+.search-row input, .scenario-choice select, .manual-copy input, .manual-copy textarea { background: #fffdf7; border: 1px solid var(--ink); border-radius: 0; color: var(--ink); min-height: 48px; min-width: 0; padding: 12px 14px; width: 100%; }
 .search-row input { max-width: 650px; }
+.search-row input::placeholder { color: var(--muted); opacity: 1; }
+.search-hint { color: var(--muted); font-size: 13px; margin: 12px 0; max-width: 750px; }
+.search-examples { align-items: center; display: flex; flex-wrap: wrap; gap: 8px; }
+.search-examples > span { color: var(--muted); font-size: 13px; margin-right: 4px; }
+.example-chip { background: var(--paper-deep); border: 1px solid var(--line); color: var(--ink); cursor: pointer; font-size: 13px; min-height: 44px; padding: 8px 14px; }
+.example-chip:hover { background: var(--ink); color: var(--paper); }
 .text-button { background: transparent; border: 0; cursor: pointer; font-size: 13px; font-weight: 800; min-height: 44px; padding: 6px 0; text-decoration: underline; text-underline-offset: 4px; }
 .search-row .text-button { flex-shrink: 0; }
 .library-filters { border: 0; margin: 24px 0 0; padding: 0; }
@@ -273,6 +279,7 @@ footer p, footer small { color: var(--muted); font-size: 11px; }
 .result-count { color: var(--muted); font-size: 13px; margin: 24px 0 18px; overflow-wrap: anywhere; }
 .library-empty { background: var(--paper-deep); padding: 32px; }
 .library-empty h3 { font-size: 20px; }
+.library-empty .text-button { display: block; margin-top: 12px; }
 .secondary-button { background: var(--ink); border: 1px solid var(--ink); color: var(--paper); cursor: pointer; min-height: 44px; padding: 10px 18px; }
 .scenario-choice { padding: 22px 0; }
 .scenario-choice select { font-size: 14px; }
@@ -301,6 +308,7 @@ footer p, footer small { color: var(--muted); font-size: 11px; }
 .share-status { min-height: 24px; }
 .manual-copy { display: block; font-size: 13px; }
 .manual-copy input { display: block; margin-top: 8px; }
+.manual-copy textarea { display: block; font: inherit; line-height: 1.7; margin-top: 8px; resize: vertical; }
 .related-section { border-top: 1px solid var(--line); margin-top: 60px; padding-top: 25px; }
 .related-list a { border-bottom: 1px solid var(--line); display: grid; gap: 4px; padding: 18px 0; }
 .related-list span, .related-list small { color: var(--muted); font-size: 13px; }

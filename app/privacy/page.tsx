@@ -16,7 +16,7 @@ export default function PrivacyPage() {
         <section className="plain-section">
           <h2>現在のデータ取扱い</h2>
           <p>アカウント作成、フォーム送信、コメント、問い合わせ受付はありません。選択・検索・チェックの状態はページを離れると消えます。Cookieや端末内ストレージを利用する独自の保存機能、アクセス解析、第三者広告は設けていません。GitHub Pagesなどの配信基盤は、ページの配信やセキュリティのためにIPアドレス等の通常のアクセス情報を処理することがあります。</p>
-          <p>URLコピーは現在の札のURLを端末のクリップボードへ書き込みます。「共有する」は端末の共有機能を開き、送信先は利用者が選びます。</p>
+          <p>「URLをコピー」は札の正規URLを、「3手順をコピー」は掲載手順・終了条件・出典URLを端末のクリップボードへ書き込みます。検索入力やチェック状態はコピーに含めません。コピー内容を自動送信する機能はありません。「共有する」は端末の共有機能を開き、送信先は利用者が選びます。</p>
           <p>配信基盤の詳しい取扱いは、<a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection">GitHub Pagesのデータ収集について</a>をご覧ください。</p>
         </section>
         <section className="plain-section">

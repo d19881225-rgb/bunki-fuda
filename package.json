@@ -9,7 +9,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --experimental-strip-types --test tests/cards.test.mjs tests/card-selection.test.mjs tests/share-actions.test.mjs tests/static-export.test.mjs",
+    "test": "node --experimental-strip-types --test tests/cards.test.mjs tests/card-selection.test.mjs tests/card-copy.test.mjs tests/share-actions.test.mjs tests/readability.test.mjs tests/static-export.test.mjs",
     "lint": "eslint . --ignore-pattern out --ignore-pattern .next"
   },
   "dependencies": {

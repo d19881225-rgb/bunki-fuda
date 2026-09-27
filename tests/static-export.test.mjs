@@ -42,5 +42,15 @@ test("every page has its own canonical URL and every card has its own share titl
     assert.ok(html.includes(`property="og:title" content="${card.title}｜分岐札"`));
     assert.match(html, /type="checkbox"/);
     assert.match(html, /同じ場面の、別の札。/);
+    assert.match(html, /3手順をコピー/);
+    assert.match(html, /内容を自動送信しません/);
   }
+});
+
+test("home explains matching and exposes search examples without storing user input", async () => {
+  const html = await readFile(new URL("index.html", outRoot), "utf8");
+  assert.match(html, /aria-describedby="search-hint"/);
+  assert.match(html, /ひらがな・カタカナどちらでも検索できます/);
+  assert.match(html, /aria-label="検索例"/);
+  for (const term of ["メール", "片付け", "勉強", "スマホ"]) assert.ok(html.includes(`>${term}</button>`));
 });
