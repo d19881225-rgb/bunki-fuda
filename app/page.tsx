@@ -3,6 +3,7 @@ import { RecoveryPicker } from "./recovery-picker";
 import { CardLibrary } from "./card-library";
 import { SiteHeader, SiteFooter } from "./site-chrome";
 import { FudaPreview } from "./fuda-preview";
+import { cards } from "../lib/cards";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
       <main id="main-content">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow"><span aria-hidden="true" />止まった日から始める、20枚の小さな手順書</p>
+            <p className="eyebrow"><span aria-hidden="true" />止まった日から始める、{cards.length}枚の小さな手順書</p>
             <h1>
               失敗した日の、
               <br />
@@ -23,7 +24,7 @@ export default function Home() {
               <br />
               今の状況から、2〜5分を目安にできる小さな3手順を選べます。
             </p>
-            <div className="hero-actions"><a className="primary-link" href="#picker">今の状況から選ぶ <span aria-hidden="true">↓</span></a><a className="hero-secondary" href="#library">全20枚を探す →</a></div>
+            <div className="hero-actions"><a className="primary-link" href="#picker">今の状況から選ぶ <span aria-hidden="true">↓</span></a><a className="hero-secondary" href="#library">全{cards.length}枚を探す →</a></div>
             <p className="hero-note">無料・登録不要。全部を取り戻さなくても大丈夫。</p>
           </div>
 
@@ -53,7 +54,7 @@ export default function Home() {
               <h2>今に合う札を探す。</h2>
             </div>
             <p>
-              5つの場面、全20枚。
+              5つの場面、全{cards.length}枚。
               <br />
               状況の言葉やカテゴリから探せます。
             </p>

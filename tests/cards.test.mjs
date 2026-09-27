@@ -1,16 +1,18 @@
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
 import test from "node:test";
+import { cards } from "../lib/cards.ts";
 
-const source = readFileSync(new URL("../lib/cards.ts", import.meta.url), "utf8");
-
-test("the library contains twenty complete cards", () => {
-  assert.equal((source.match(/slug: "/g) ?? []).length, 20);
-  assert.equal((source.match(/stopRule: "/g) ?? []).length, 20);
-  assert.equal((source.match(/branch: "/g) ?? []).length, 20);
+test("the library contains twenty-five complete cards", () => {
+  assert.equal(cards.length, 25);
+  for (const card of cards) {
+    assert.equal(card.steps.length, 3, card.slug);
+    assert.ok(card.steps.every((step) => step.trim()), card.slug);
+    assert.ok(card.branch.trim() && card.stopRule.trim() && card.why.trim(), card.slug);
+    assert.ok(card.minutes >= 2 && card.minutes <= 5, card.slug);
+  }
 });
 
 test("every slug is unique", () => {
-  const slugs = [...source.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
+  const slugs = cards.map((card) => card.slug);
   assert.equal(slugs.length, new Set(slugs).size);
 });

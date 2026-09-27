@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cards } from "../lib/cards";
 
 function Brand({ footer = false }: { footer?: boolean }) {
   return <Link className={footer ? "brand footer-brand" : "brand"} href="/" aria-label="分岐札 ホーム"><span className="brand-mark" aria-hidden="true" /><span className="brand-type"><strong>分岐札</strong><small>小さな再開の手順書</small></span></Link>;
@@ -22,7 +23,7 @@ export function SiteFooter() {
     <footer>
       <div><Brand footer /><p>失敗を、分岐点に。</p></div>
       <nav aria-label="フッターナビゲーション">
-        <Link href="/about">運営・編集原則</Link><Link href="/privacy">プライバシー</Link><Link href="/#library">全20枚を探す</Link>
+        <Link href="/about">運営・編集原則</Link><Link href="/privacy">プライバシー</Link><Link href="/#library">全{cards.length}枚を探す</Link>
       </nav>
       <small>© 2026 BUNKI FUDA<br />更新：2026.09.28</small>
     </footer>

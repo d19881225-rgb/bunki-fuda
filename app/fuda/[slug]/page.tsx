@@ -52,7 +52,7 @@ export default async function FudaPage({ params }: PageProps) {
     <>
       <SiteHeader />
       <main className="detail-page" id="main-content">
-        <Link className="crumb" href="/#library">← 全20枚へ戻る</Link>
+        <Link className="crumb" href="/#library">← 全{cards.length}枚へ戻る</Link>
         <div className="detail-sheet" data-category={card.category}>
         <div className="detail-kicker">
           <span className="category-badge">{category?.label}の札</span><span>目安 {card.minutes}分</span>

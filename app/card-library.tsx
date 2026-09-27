@@ -36,14 +36,14 @@ export function CardLibrary() {
         </fieldset>
       </div>
       <p className="result-count" role="status">{filtered.length}枚の札{category !== "all" && `・${categories.find((item) => item.key === category)?.label}`}{query.trim() && `・「${query.trim()}」`}</p>
-      <noscript><p>検索・絞り込みにはJavaScriptが必要です。下の全20枚はそのまま読めます。</p></noscript>
+      <noscript><p>検索・絞り込みにはJavaScriptが必要です。下の全{cards.length}枚はそのまま読めます。</p></noscript>
       {filtered.length ? <div className="card-grid" data-count={filtered.length}>
         {filtered.map((card) => <Link className="fuda-card" href={`/fuda/${card.slug}`} key={card.slug} data-category={card.category}>
           <div className="fuda-topline"><span className="category-badge">{categories.find((item) => item.key === card.category)?.label}</span><span>目安 {card.minutes}分</span></div>
           <p>{card.trigger}</p><h3>{card.title}</h3>
           <div className="fuda-footer"><span>3手順を読む</span><span aria-hidden="true">↗</span></div>
         </Link>)}
-      </div> : <div className="library-empty"><h3>この条件の札はありません。</h3>{acrossCategories.length > 0 ? <><p>別のカテゴリに{acrossCategories.length}枚見つかりました。検索の言葉はそのまま、範囲を広げられます。</p><button type="button" className="secondary-button" onClick={() => setCategory("all")}>全カテゴリで探す（{acrossCategories.length}枚）</button></> : <p>短い言葉に変えるか、上の検索例を試してください。まだ扱っていない場面もあります。</p>}<button type="button" className="text-button" onClick={reset}>全20枚に戻る</button></div>}
+      </div> : <div className="library-empty"><h3>この条件の札はありません。</h3>{acrossCategories.length > 0 ? <><p>別のカテゴリに{acrossCategories.length}枚見つかりました。検索の言葉はそのまま、範囲を広げられます。</p><button type="button" className="secondary-button" onClick={() => setCategory("all")}>全カテゴリで探す（{acrossCategories.length}枚）</button></> : <p>短い言葉に変えるか、上の検索例を試してください。まだ扱っていない場面もあります。</p>}<button type="button" className="text-button" onClick={reset}>全{cards.length}枚に戻る</button></div>}
     </>
   );
 }

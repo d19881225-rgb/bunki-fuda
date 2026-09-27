@@ -5,7 +5,7 @@ import { cards, getCard } from "../lib/cards.ts";
 
 const outRoot = new URL("../out/", import.meta.url);
 
-test("exports the home, policy, sitemap, and all twenty card pages", async () => {
+test("exports the home, policy, sitemap, and all twenty-five card pages", async () => {
   await Promise.all([
     access(new URL("index.html", outRoot)),
     access(new URL("about/index.html", outRoot)),
@@ -17,7 +17,7 @@ test("exports the home, policy, sitemap, and all twenty card pages", async () =>
   ]);
 
   const sitemap = await readFile(new URL("sitemap.xml", outRoot), "utf8");
-  assert.equal((sitemap.match(/<url>/g) ?? []).length, 23);
+  assert.equal((sitemap.match(/<url>/g) ?? []).length, 28);
 });
 
 test("the hero previews a real card with its three steps and stopping rule", async () => {
@@ -35,8 +35,8 @@ test("the hero previews a real card with its three steps and stopping rule", asy
 
 test("the library and all details render the new card surfaces with category labels", async () => {
   const html = await readFile(new URL("index.html", outRoot), "utf8");
-  assert.equal((html.match(/class="fuda-card"/g) ?? []).length, 20);
-  assert.match(html, /class="card-grid" data-count="20"/);
+  assert.equal((html.match(/class="fuda-card"/g) ?? []).length, 25);
+  assert.match(html, /class="card-grid" data-count="25"/);
   assert.match(html, /class="search-control"/);
   for (const card of cards) {
     const detail = await readFile(new URL(`fuda/${card.slug}/index.html`, outRoot), "utf8");

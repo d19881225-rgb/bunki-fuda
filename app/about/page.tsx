@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { SiteHeader, SiteFooter } from "../site-chrome";
 import { pageMetadata } from "../../lib/site";
+import { cards } from "../../lib/cards";
 
 export const metadata = pageMetadata("運営・編集原則", "分岐札の編集方針、AIの使い方、無料・登録不要の運営方法。", "/about/");
 
@@ -27,10 +28,10 @@ export default function AboutPage() {
         </section>
         <section className="plain-section">
           <h2>運営方法</h2>
-          <p>全20枚を無料で公開しています。会員登録、個別相談、受託制作は行いません。札の選択、検索、手順チェックは閲覧中のブラウザ内で動き、外部AIへ入力を送る機能はありません。所要時間は目安で、効果や作業の完了を保証するものではありません。</p>
+          <p>全{cards.length}枚を無料で公開しています。会員登録、個別相談、受託制作は行いません。札の選択、検索、手順チェックは閲覧中のブラウザ内で動き、外部AIへ入力を送る機能はありません。所要時間は目安で、効果や作業の完了を保証するものではありません。</p>
         </section>
         <section className="plain-section">
-          <h2>今回の更新</h2><p>2026年9月28日：全20枚の検索・カテゴリ絞り込み、状況の選び直し、手順チェックを追加しました。印刷・URLコピー・関連札から繰り返し使えます。</p>
+          <h2>今回の更新</h2><p>2026年9月28日：朝・仕事・学び・家事・夜に各1枚を追加し、全{cards.length}枚になりました。検索・カテゴリ絞り込み、状況の選び直し、手順チェック、印刷・URLコピーは引き続き利用できます。</p>
         </section>
       </main>
       <SiteFooter />
