@@ -86,8 +86,15 @@
 | スマホ | 320px・390pxでトップと詳細を確認。320pxで札選び、一覧、FAQ、運営・プライバシーも横方向のはみ出しなし |
 | 既存機能 | かな検索、検索例、0件からカテゴリを広げて復帰、状況の選び直し、3手順チェック、コピー成功表示をブラウザで確認 |
 | 共有画像 | 新配色の1200×630 PNGを生成し、文字の欠けがないことを目視確認 |
-| 公開 | GitHub Pagesへの反映・公開画面の確認待ち |
+| 公開 | [GitHub Actions 第5回](https://github.com/d19881225-rgb/bunki-fuda/actions/runs/36354557494)が46秒で成功。ビルド・テスト・GitHub Pagesへの配信が完了 |
+| 公開画面 | 新配色・実物の札プレビュー・検索結果2枚を確認。390pxでトップと詳細に横方向のはみ出しなし。詳細のチェックとコピー成功表示も確認 |
 
-ローカルでは既存の生成ファイル `.next/turbopack` に対するアクセス拒否でビルドが止まった。元データや公開用設定は変更せず、検証用フォルダーでwebpackによる静的ビルドを完了した。公開時は従来どおりGitHub ActionsのTurbopackビルドでも確認する。
+ローカルでは既存の生成ファイル `.next/turbopack` に対するアクセス拒否でビルドが止まった。元データや公開用設定は変更せず、検証用フォルダーでwebpackによる静的ビルドを完了した。公開時は従来どおりGitHub ActionsのTurbopackビルドでも成功を確認した。
+
+公開確認日：2026年9月28日。実装コミット：`343eb9fc73da940eef454cd1e12035a66c43517a`。
+
+確認画像は作業フォルダーの `reports/bunki-fuda-20260928/` に保存した。改善前は `design-before-home.png`、公開後は `design-after-home.png`、`design-after-mobile.png`、`design-after-detail.png`。
+
+保守メモ：公開処理に失敗はないが、GitHub ActionsにNode.js 20を対象とする既存アクションとUbuntuランナー更新の通知がある。外観改善とは分け、次回の配信基盤の保守で見直す。今回、新しい費用・依存パッケージ・外部サービスは追加していない。
 
 参照：[W3C・文字と背景のコントラスト](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)。本改善はサイト全体のWCAG適合認証を意味しない。
