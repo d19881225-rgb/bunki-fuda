@@ -28,6 +28,7 @@ export function RecoveryPicker() {
           {categories.map((item) => (
             <button
               aria-pressed={category === item.key}
+              data-category={item.key}
               className={category === item.key ? "choice active" : "choice"}
               key={item.key}
               onClick={() => {

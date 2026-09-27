@@ -2,6 +2,7 @@ import Link from "next/link";
 import { RecoveryPicker } from "./recovery-picker";
 import { CardLibrary } from "./card-library";
 import { SiteHeader, SiteFooter } from "./site-chrome";
+import { FudaPreview } from "./fuda-preview";
 
 export default function Home() {
   return (
@@ -11,7 +12,7 @@ export default function Home() {
       <main id="main-content">
         <section className="hero">
           <div className="hero-copy">
-            <p className="eyebrow">止まった日から始める、20枚の小さな手順書</p>
+            <p className="eyebrow"><span aria-hidden="true" />止まった日から始める、20枚の小さな手順書</p>
             <h1>
               失敗した日の、
               <br />
@@ -23,27 +24,10 @@ export default function Home() {
               今の状況から、2〜5分を目安にできる小さな3手順を選べます。
             </p>
             <div className="hero-actions"><a className="primary-link" href="#picker">今の状況から選ぶ <span aria-hidden="true">↓</span></a><a className="hero-secondary" href="#library">全20枚を探す →</a></div>
-            <p className="hero-note">無料・登録不要。作業を再開する入口をつくります。</p>
+            <p className="hero-note">無料・登録不要。全部を取り戻さなくても大丈夫。</p>
           </div>
 
-          <div className="hero-diagram" aria-label="一つの失敗から三つの復帰手順へ分岐する図">
-            <div className="diagram-origin">
-              <span>失敗</span>
-              <strong>した</strong>
-            </div>
-            <div className="branch branch-one">
-              <span>01</span>
-              <b>小さくする</b>
-            </div>
-            <div className="branch branch-two">
-              <span>02</span>
-              <b>場所を変える</b>
-            </div>
-            <div className="branch branch-three">
-              <span>03</span>
-              <b>終わりを決める</b>
-            </div>
-          </div>
+          <FudaPreview />
         </section>
 
         <section className="principle-strip" aria-label="分岐札の原則">

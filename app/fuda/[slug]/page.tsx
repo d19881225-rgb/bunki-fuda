@@ -53,8 +53,9 @@ export default async function FudaPage({ params }: PageProps) {
       <SiteHeader />
       <main className="detail-page" id="main-content">
         <Link className="crumb" href="/#library">← 全20枚へ戻る</Link>
+        <div className="detail-sheet" data-category={card.category}>
         <div className="detail-kicker">
-          <span>{category?.label}の札</span><span>目安 {card.minutes}分</span>
+          <span className="category-badge">{category?.label}の札</span><span>目安 {card.minutes}分</span>
         </div>
         <p className="detail-trigger">{card.trigger}</p>
         <h1>{card.title}</h1>
@@ -63,8 +64,9 @@ export default async function FudaPage({ params }: PageProps) {
         <section className="detail-note">
           <h2>この札の設計意図</h2><p>{card.why}</p>
         </section>
+        </div>
         <PrintShare key={card.slug} card={card} url={`${siteUrl}/fuda/${card.slug}/`} />
-        <section className="related-section" aria-labelledby="related-heading"><h2 id="related-heading">同じ場面の、別の札。</h2><div className="related-list">{related.map((item) => <Link key={item.slug} href={`/fuda/${item.slug}`}><span>{item.trigger}</span><strong>{item.title}</strong><small>目安 {item.minutes}分 →</small></Link>)}</div></section>
+        <section className="related-section" aria-labelledby="related-heading"><h2 id="related-heading">同じ場面の、別の札。</h2><div className="related-list">{related.map((item) => <Link key={item.slug} href={`/fuda/${item.slug}`} data-category={item.category}><span>{item.trigger}</span><strong>{item.title}</strong><small>目安 {item.minutes}分 →</small></Link>)}</div></section>
       </main>
       <SiteFooter />
       <script

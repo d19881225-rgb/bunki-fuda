@@ -1,17 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#f4f0e6"/>
-  <rect x="66" y="55" width="22" height="22" fill="#ef4423"/>
-  <g font-family="Yu Gothic, Meiryo, sans-serif" fill="#171713">
+  <rect width="1200" height="630" fill="#f7f4ed"/>
+  <rect x="60" y="48" width="28" height="36" rx="5" fill="#9b3f2b"/>
+  <path d="M67 62h14M67 69h10" stroke="#fffdf8" stroke-width="2"/>
+  <g font-family="Meiryo, Yu Gothic, sans-serif" fill="#24302c">
     <text x="105" y="78" font-size="28" font-weight="700">分岐札</text>
-    <text x="65" y="188" font-size="25" font-weight="700">止まった日から始める、20枚の小さな手順書</text>
-    <text x="60" y="303" font-size="78" font-weight="900">失敗した日の、</text>
-    <rect x="65" y="336" width="470" height="90" fill="#d8f04a"/>
-    <text x="60" y="414" font-size="78" font-weight="900">次の一手。</text>
-    <text x="65" y="520" font-size="25" font-weight="700">朝・仕事・学び・家事・夜</text>
-    <text x="65" y="568" font-size="22">2〜5分の目安 / 無料・登録不要</text>
+    <text x="60" y="172" font-size="21" fill="#58615a">20枚の小さな再開の手順書</text>
+    <text x="56" y="278" font-size="72" font-weight="700">失敗した日の、</text>
+    <rect x="59" y="364" width="415" height="22" rx="4" fill="#e8edc5"/>
+    <text x="56" y="380" font-size="72" font-weight="700">次の一手。</text>
+    <text x="60" y="494" font-size="22" fill="#58615a">朝・仕事・学び・家事・夜</text>
+    <text x="60" y="540" font-size="22">2〜5分の目安 / 無料・登録不要</text>
   </g>
-  <g stroke="#171713" stroke-width="8" fill="none"><path d="M790 315 L900 170 M790 315 L900 315 M790 315 L900 460"/></g>
-  <circle cx="770" cy="315" r="58" fill="#171713"/>
-  <g fill="#f4f0e6" stroke="#171713" stroke-width="3"><rect x="900" y="118" width="235" height="100"/><rect x="900" y="265" width="235" height="100" fill="#d8f04a"/><rect x="900" y="410" width="235" height="100"/></g>
-  <g font-family="Yu Gothic, Meiryo, sans-serif" fill="#171713" font-size="25" font-weight="700" text-anchor="middle"><text x="1017" y="178">小さくする</text><text x="1017" y="325">場所を変える</text><text x="1017" y="470">終わりを決める</text></g>
+  <rect x="711" y="126" width="430" height="422" rx="18" fill="#e5edda" stroke="#d9ddd1" transform="rotate(2 926 337)"/>
+  <rect x="700" y="116" width="430" height="422" rx="18" fill="#fffdf8" stroke="#d9ddd1"/>
+  <rect x="730" y="145" width="67" height="31" rx="5" fill="#e5edda"/>
+  <g font-family="Meiryo, Yu Gothic, sans-serif" fill="#24302c">
+    <text x="763" y="167" text-anchor="middle" font-size="16">家事</text>
+    <text x="1098" y="167" text-anchor="end" font-size="16" fill="#58615a">目安 3分</text>
+    <text x="730" y="218" font-size="17" fill="#58615a">洗い物がたまり、台所に入りたくない</text>
+    <text x="730" y="267" font-size="26" font-weight="700">洗わずに、蛇口までの</text>
+    <text x="730" y="306" font-size="26" font-weight="700">道を作る</text>
+    <g font-size="16" font-weight="700" fill="#9b3f2b"><text x="730" y="359">01</text><text x="730" y="402">02</text><text x="730" y="445">03</text></g>
+    <g font-size="18"><text x="767" y="359">割れ物だけ端へ分ける</text><text x="767" y="402">排水口の上を一皿分あける</text><text x="767" y="445">コップか箸を一つだけ洗う</text></g>
+    <rect x="730" y="473" width="370" height="38" rx="7" fill="#e8edc5"/>
+    <text x="748" y="498" font-size="16">全部を洗わなくて大丈夫。</text>
+  </g>
 </svg>

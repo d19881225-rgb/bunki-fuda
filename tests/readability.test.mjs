@@ -14,10 +14,21 @@ test("main text/background combinations exceed a 4.5:1 contrast ratio", async ()
   for (const [foreground, background] of [
     ["muted", "paper"], ["muted", "paper-deep"], ["muted", "lime"],
     ["ink", "paper"], ["ink", "lime"], ["paper", "red"], ["red", "paper"], ["red", "lime"],
+    ["ink", "surface"], ["muted", "surface"], ["red", "paper-deep"],
+    ...["morning", "work", "study", "home", "night"].flatMap((category) => [["ink", category], ["muted", category]]),
   ]) {
     const values = [luminance(colors[foreground]), luminance(colors[background])];
     const ratio = (Math.max(...values) + 0.05) / (Math.min(...values) + 0.05);
     assert.ok(ratio >= 4.5, `${foreground}/${background}: ${ratio}`);
   }
   assert.match(css, /input::placeholder\s*\{[^}]*color: var\(--muted\);[^}]*opacity: 1;/);
+});
+
+test("the interface keeps reduced-motion and keyboard focus styles", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.match(css, /:focus-visible\s*\{[^}]*outline: 3px solid/);
+  assert.match(css, /prefers-reduced-motion:reduce/);
+  assert.match(css, /transition: none !important/);
+  assert.match(css, /\.hero-preview\s*\{[^}]*isolation: isolate/);
+  assert.doesNotMatch(css, /\.hero-preview\s*\{[^}]*display: none/);
 });
